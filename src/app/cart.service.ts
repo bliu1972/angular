@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 })
 export class CartService {
   items: Product[] = []
+  apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {
   }
@@ -26,6 +27,6 @@ export class CartService {
   }
 
   getShippingPrices() {
-    return this.http.get<{type: string, price: number}[]> ('/angular/assets/shipping.json');
+    return this.http.get<{type: string, price: number}[]> (this.apiUrl + '/assets/shipping.json');
   }
 }
